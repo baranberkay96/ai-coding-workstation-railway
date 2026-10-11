@@ -39,13 +39,13 @@ AI coding agents work best on a machine that stays online: long tasks keep runni
 1. Open the service URL and enter the value of `PASSWORD` from the service's Variables tab.
 2. Open a terminal and start a persistent session: `tmux new -A -s main`.
 3. Sign in to your tools: `claude`, `codex login --device-auth`, `NO_BROWSER=true gemini`, `opencode auth login`, or set `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GEMINI_API_KEY` as variables.
-4. For SSH, copy the TCP proxy host and port from Settings → Networking and run `ssh -p <port> coder@<host>` with `SSH_PASSWORD`. For key-only access, put your public key in `SSH_AUTHORIZED_KEYS` and clear `SSH_PASSWORD`.
+4. For SSH, copy the TCP proxy host and port from Settings → Networking and run `ssh -p {port} coder@{host}` with `SSH_PASSWORD`. For key-only access, put your public key in `SSH_AUTHORIZED_KEYS` and clear `SSH_PASSWORD`.
 
 **What persists**: everything under `/home/coder` (projects in `~/workspace`, CLI logins, VS Code extensions and settings, per-user npm and pip installs). System packages installed with `sudo apt` reset on redeploy.
 
 **Scaling**: this is a single-user machine, so keep one replica. Railway scales the service's RAM and CPU vertically up to your plan limit, which covers parallel agents and builds. For a team, deploy one workstation per person.
 
-**Pinning and upgrades**: code-server, Node.js and each CLI version are build arguments at the top of the Dockerfile. Change them and redeploy. To get a newer CLI immediately without a rebuild, run `npm i -g <package>@latest` as `coder`; it installs into `~/.npm-global` on the volume, which comes first in `PATH`.
+**Pinning and upgrades**: code-server, Node.js and each CLI version are build arguments at the top of the Dockerfile. Change them and redeploy. To get a newer CLI immediately without a rebuild, run `npm i -g {package}@latest` as `coder`; it installs into `~/.npm-global` on the volume, which comes first in `PATH`.
 
 ### Why Deploy AI Coding Workstation on Railway?
 
