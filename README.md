@@ -1,5 +1,7 @@
 # Deploy and Host AI Coding Workstation with Railway
 
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/ai-coding-workstation-claude-code-codex-)
+
 A cloud development box with VS Code in the browser (code-server), a full terminal and optional SSH. Claude Code, OpenAI Codex CLI, Gemini CLI and OpenCode come preinstalled, along with Node.js, Python, uv, git, gh and build tools. Your home directory, projects and CLI logins live on a persistent volume.
 
 ## About Hosting AI Coding Workstation
