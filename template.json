@@ -1,0 +1,127 @@
+{
+  "name": "AI Coding Workstation (Claude Code, Codex, Gemini CLI)",
+  "description": "Browser VS Code and terminal with AI coding CLIs preinstalled. Persistent home.",
+  "category": "Other",
+  "tags": [
+    "code-server",
+    "vscode",
+    "claude-code",
+    "codex",
+    "gemini-cli",
+    "opencode",
+    "ssh",
+    "devbox",
+    "ai-coding"
+  ],
+  "upstream": {
+    "repo": "coder/code-server",
+    "version": "4.141.0",
+    "checked": "2026-10-10"
+  },
+  "services": {
+    "Workstation": {
+      "icon": "https://raw.githubusercontent.com/coder/code-server/main/src/browser/media/pwa-icon-192.png",
+      "source": {
+        "repo": "baranberkay96/ai-coding-workstation-railway",
+        "rootDirectory": "/services/workstation"
+      },
+      "startCommand": null,
+      "preDeployCommand": null,
+      "healthcheckPath": "/healthz",
+      "healthcheckTimeout": 120,
+      "restartPolicyType": "ON_FAILURE",
+      "restartPolicyMaxRetries": 10,
+      "numReplicas": 1,
+      "cronSchedule": null,
+      "publicDomain": true,
+      "targetPort": 8080,
+      "tcpProxy": 2222,
+      "volume": {
+        "mountPath": "/home"
+      },
+      "variables": {
+        "PASSWORD": {
+          "defaultValue": "${{secret(24)}}",
+          "description": "Login password for the browser IDE (code-server). Generated at deploy; copy it from this variable. Minimum 12 characters.",
+          "required": false
+        },
+        "PORT": {
+          "defaultValue": "8080",
+          "description": "Port code-server listens on; the public domain targets it.",
+          "required": false
+        },
+        "SSH_PASSWORD": {
+          "defaultValue": "${{secret(32)}}",
+          "description": "Password for SSH as user 'coder' through the TCP proxy. Clear it to allow key-only SSH; with no password and no keys, sshd is not started.",
+          "required": false
+        },
+        "SSH_AUTHORIZED_KEYS": {
+          "defaultValue": "",
+          "description": "Optional SSH public keys (one per line) allowed to log in as 'coder'. Keys you add to ~/.ssh/authorized_keys also persist.",
+          "required": false
+        },
+        "SSH_PORT": {
+          "defaultValue": "2222",
+          "description": "Port sshd listens on inside the container; the TCP proxy targets it.",
+          "required": false
+        },
+        "ANTHROPIC_API_KEY": {
+          "defaultValue": "",
+          "description": "Optional. Claude Code uses it instead of a Claude.ai login. Leave empty to log in with your Pro/Max subscription.",
+          "required": false
+        },
+        "OPENAI_API_KEY": {
+          "defaultValue": "",
+          "description": "Optional. Codex CLI uses it instead of a ChatGPT login (codex login --device-auth).",
+          "required": false
+        },
+        "GEMINI_API_KEY": {
+          "defaultValue": "",
+          "description": "Optional. Gemini CLI uses it instead of a Google login.",
+          "required": false
+        },
+        "OPENROUTER_API_KEY": {
+          "defaultValue": "",
+          "description": "Optional. Lets OpenCode use OpenRouter models.",
+          "required": false
+        },
+        "GITHUB_TOKEN": {
+          "defaultValue": "",
+          "description": "Optional GitHub token for gh and HTTPS git (configured as git credential helper at start).",
+          "required": false
+        },
+        "GIT_USER_NAME": {
+          "defaultValue": "",
+          "description": "Optional git user.name for commits.",
+          "required": false
+        },
+        "GIT_USER_EMAIL": {
+          "defaultValue": "",
+          "description": "Optional git user.email for commits.",
+          "required": false
+        },
+        "GIT_REPO": {
+          "defaultValue": "",
+          "description": "Optional repository URL cloned once into ~/workspace on first start (private repos need GITHUB_TOKEN).",
+          "required": false
+        },
+        "WORKSTATION_ENV_PASSTHROUGH": {
+          "defaultValue": "",
+          "description": "Optional comma-separated names of extra variables to expose in SSH sessions (the browser terminal sees all variables).",
+          "required": false
+        },
+        "TZ": {
+          "defaultValue": "UTC",
+          "description": "Time zone for shells and tools (e.g. Europe/Istanbul).",
+          "required": false
+        },
+        "RAILWAY_DEPLOYMENT_DRAINING_SECONDS": {
+          "defaultValue": "15",
+          "description": "Grace period for code-server and running CLIs to exit cleanly on redeploy.",
+          "required": false
+        }
+      }
+    }
+  },
+  "buckets": []
+}

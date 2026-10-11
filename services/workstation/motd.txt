@@ -1,0 +1,12 @@
+
+  AI Coding Workstation
+  ---------------------
+  claude     Claude Code         (login: run `claude`, or set ANTHROPIC_API_KEY)
+  codex      OpenAI Codex CLI    (login: `codex login --device-auth`, or OPENAI_API_KEY)
+  gemini     Gemini CLI          (login: `NO_BROWSER=true gemini`, or GEMINI_API_KEY)
+  opencode   OpenCode            (login: `opencode auth login`)
+  gh, git, node, npm, python3, uv, pipx, tmux, rg, fd, jq
+
+  Persistent: /home/coder (projects in ~/workspace). Everything else resets on redeploy.
+  Keep agents running after you disconnect:  tmux new -A -s main
+
