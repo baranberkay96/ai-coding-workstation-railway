@@ -1,6 +1,6 @@
 {
   "name": "AI Coding Workstation (Claude Code, Codex, Gemini CLI)",
-  "description": "Browser VS Code and terminal with AI coding CLIs preinstalled. Persistent home.",
+  "description": "Browser VS Code and terminal with AI coding CLIs and a persistent home.",
   "category": "Other",
   "tags": [
     "code-server",

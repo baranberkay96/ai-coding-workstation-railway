@@ -5,7 +5,7 @@
 | Field | Value |
 |---|---|
 | Name | **AI Coding Workstation (Claude Code, Codex, Gemini CLI)** (LISTINGS.md name, no version label: the workstation bundles several tools and has no single upstream version) |
-| Description | Browser VS Code and terminal with AI coding CLIs preinstalled. Persistent home. (79 chars, unchanged) |
+| Description | Browser VS Code and terminal with AI coding CLIs and a persistent home. (79 chars, unchanged) |
 | Category | Other |
 | Tags | code-server, vscode, claude-code, codex, gemini-cli, opencode, ssh, devbox, ai-coding |
 
